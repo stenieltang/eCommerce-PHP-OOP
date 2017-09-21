@@ -85,11 +85,17 @@ class DataOperation extends Database{
 $obj = new DataOperation;
 
 
-if(isset($_POST["submit"])) {    							 //clicking submit button inside Add form will redirect in this function 
+if(isset($_POST["submit"])) {    							 //clicking submit button inside Add form will redirect in this function 	   
+  $filetmp = $_FILES["p_img"]["tmp_name"];
+  $filename = $_FILES["p_img"]["name"];
+  $filetype = $_FILES["p_img"]["type"];
+  $filepath = "../../images/".$filename;
+  move_uploaded_file($filetmp,$filepath);
+ 
 	$myArray = array(
 		"prod_name" => $_POST['name'],
 		"prod_price" => $_POST['price'],
-		"prod_img" => $_POST['p_img']  
+		"prod_img" => $filename  
 		// key    =>   value
 		);
 	if($obj->insert_record("tb_prod",$myArray)) {        //if insert_record method inside class is true  

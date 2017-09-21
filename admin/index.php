@@ -53,7 +53,7 @@
             <div class="panel panel-primary">
               <div class="panel-heading">Add Product Form</div>
                 <div class="panel-body">
-                  <form method="post" action="includes/action.php">
+                  <form method="post" action="includes/action.php" enctype="multipart/form-data">
                     <table class="table table-hover">
                         <tr>
                           <td>Product Name</td>
@@ -91,11 +91,10 @@
       <div class="col-md-12">
         <table class="table table-bordered">
           <tr>
-            <th width="10%">#</th>
-            <th width="30%">Name</th>
-            <th width="20%">Price</th>
-            <th width="20%">Image</th>
-            <th>&nbsp;</th>
+            <th width="10%" class="text-center">#</th>
+            <th width="30%" class="text-center">Name</th>
+            <th width="20%" class="text-center">Price</th>
+            <th width="20%" class="text-center">Image</th>
             <th>&nbsp;</th>
           </tr>
 
@@ -105,13 +104,15 @@
             //breaking point
             ?>
 
-          <tr>
+          <tr class="text-center">
             <td><?php echo $row["prod_id"]; ?></td>
             <td><?php echo $row["prod_name"]; ?></td>
-            <td><?php echo $row["prod_price"]; ?></td>
+            <td>$ <?php echo $row["prod_price"]; ?></td>
             <td><img src="../images/<?php echo $row["prod_img"]; ?>" style="height:100px"/></td>
-            <td><a href="index.php?update=1&id=<?php echo $row["prod_id"] ?>" class="btn btn-info">Edit</a></td>
-            <td><a href="includes/action.php?delete=1&id=<?php echo $row["prod_id"] ?>" class="btn btn-danger">Delete</a></td>
+            <td>
+              <a href="index.php?update=1&id=<?php echo $row["prod_id"] ?>" class="btn btn-info">Edit</a>
+              <a href="includes/action.php?delete=1&id=<?php echo $row["prod_id"] ?>" class="btn btn-danger">Delete</a>
+            </td>
           </tr>
 
             <?php
